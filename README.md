@@ -11,6 +11,10 @@ If You are a builder on the FVM Chain and you see the future and potential of th
 
 ### 👨‍🔬 What is this and what was this built for?
 
+Dont spend more time on writing complex contracts, its the time to Generate the contracts. **FVM-AI-Deploy is contract's generater and deployer with the help of AI.**
+
+                                        Generate -> Compile -> Deploy -> Verify -> IPFS -> Explore
+
 FVM-AI-Deploy was built for the purpose of improving the developer experience on the FVM Chains, For FVM to be used and adopted widely the developer experience has to improve and FVM-AI-Deploy was built with the same goal. Not only does it improve the deployment, interaction and verification process but it also allows **generate the contract code automatically based on user request using the power of AI**. If you want to deploy a contract asap or are you a beginer on writing contract, FVM-AI-Deploy is a place for you to genearte contract and deploy in a mins.
 
 ## 🤔 Why FVM-AI-Deploy?
