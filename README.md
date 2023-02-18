@@ -38,3 +38,13 @@ API Docs:- https://abi-test.onrender.com/docs#/
 - /compile [ It generate contract, abi, byte code and also it push these deatils to web3.storage {ipfs} ]
 
 <img width="750" alt="Screenshot 2023-02-06 at 6 50 21 PM" src="https://i.postimg.cc/hj2xgcsV/fastapi.png">
+
+### ☄️ What's next?
+
+1. Building FVM-AI-Deploy like contract as a service platform. User can get varity on contracts code in a sec and deploy those contracts in a mins.
+
+2. AI model keep improve to support different kind of contracts model.
+
+3. Planning to provide API as a service model also.
+
+4. UI/UX improvements.
