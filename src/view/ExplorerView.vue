@@ -39,6 +39,7 @@ export default {
             error : false,
             message : '',
         },
+        explorerFetching: false
     }
   },
   methods: {
@@ -54,7 +55,7 @@ export default {
         let  addressData = JSON.parse(window.localStorage.getItem('addressData'))
 
         let findData = addressData.find((v) => {
-            return v.walletAddress == this.address
+            return v.address == this.address
         })
 
         if(!findData) {
@@ -66,11 +67,35 @@ export default {
             return false
         }
 
+        if(!findData.cid) {
+            this.validation = {
+                error : true,
+                message : 'CID not founded.'
+            }
+
+            return false
+        }
+
+        return this.retrieveContract(findData.cid)
+    },
+    async retrieveContract(cid) {
+        this.explorerFetching = true
+
+        let url = "https://"+ cid +".ipfs.w3s.link/"
+        let obj = this
+        
+        fetch(url)
+        .then((response) => response.json())
+        .then((data) => obj.setStateValues(data))
+    },
+    setStateValues(data) {
         //this.code = findData.code.split('      ').map((x) => '\n'+ x.trim()).join('\n')
-        this.code = findData.code
-        this.abi  = findData.abi
-        this.bytecode  = findData.bytecode
-        this.walletAddress = findData.walletAddress
+        this.code = data.code
+        this.abi  = data.abi
+        this.bytecode  = data.bytecode
+        this.walletAddress = data.walletAddress
+
+        this.explorerFetching = false
     }
   },
   mounted() { 

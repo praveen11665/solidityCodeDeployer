@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="text-white text-center">Deploy here</h2>           
+        <h2 class="text-white text-center">Deploy here</h2>
 
         <div class="mx-auto max-w-xl mb-10 px-4">
             <div class="input-group mb-3">
@@ -40,6 +40,7 @@
 </template>
 <script>
 import Web3 from 'web3'
+import { Web3Storage } from "web3.storage";
 import { useCompilerStore } from '@/stores/modules/compiler.module'
 
 export default {
@@ -65,6 +66,11 @@ export default {
     const compilerStore = useCompilerStore()
 
     return { compilerStore }
+  },
+  computed: {
+    web3AccessToken() {
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDRFN0VENEIxYjYyMUY1RTU5QThlNEQxODk3RDE5NjdGRThGOUFlNmUiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzY3MDY4MjAxMzYsIm5hbWUiOiJtYW5pIn0.kxOPF3kxqW4B7JTkAGbhtduw2TER7iJWwTQ8TLYmB7E'
+    },
   },
   methods: {
     getCompilerCode() {
@@ -109,6 +115,11 @@ export default {
         })
     },
     async codeDeploy() {
+        if(!this.metaMaskAccount) {
+            let accounts = await window.web3.eth.getAccounts();
+            this.metaMaskAccount = accounts[0]
+        }
+
         this.deployFetching = true
         var deployingContract = new window.web3.eth.Contract(this.abi).deploy({
             data: this.bytecode,
@@ -122,27 +133,42 @@ export default {
 
         this.walletAddress = deployedContract.options.address
 
-        let data = [];
-        data = JSON.parse(localStorage.getItem('addressData')) || [];
-
-        data.push({
+        this.storeContract({
             question: this.question,
             code: this.code,
             abi: this.abi,
             bytecode: this.bytecode,
             walletAddress: this.walletAddress,
+        })        
+
+        this.deployFetching = false
+    },
+    async storeContract(obj) {
+        const blob = new Blob([JSON.stringify(obj)], { type: "application/json" });       
+        const files = [new File([blob], "contract.json")];
+        const client = new Web3Storage({ token: this.web3AccessToken })        
+        const cid = await client.put(files, {
+            wrapWithDirectory: false,
+        });
+
+        let data = [];
+        data = JSON.parse(localStorage.getItem('addressData')) || [];
+        data.push({            
+            address: this.walletAddress,
+            cid: cid,
         })
 
         localStorage.setItem('addressData', JSON.stringify(data));
 
-        this.deployFetching = false
-    }
-  },
+        return cid;
+    },    
+  },  
   async mounted() { 
     if(window.ethereum){
         window.ethereum.send('eth_requestAccounts');
         window.web3 = new Web3(window.ethereum);
         let accounts = await window.web3.eth.getAccounts();
+
         this.metaMaskAccount = accounts[0]        
     }
   }
