@@ -2,11 +2,16 @@
 
 If You are a builder on the FVM Chain and you see the future and potential of this amazing Chain, Then FVM-AI-Deploy is for you.
 
-<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/SNC6YFxb/code.png' border='0' alt='code'/></a>
+<br />
+<div align="center">
+    <a href="https://ibb.co/c2J0Fwy"><img src="https://i.ibb.co/c2J0Fwy/Add-a-heading.png" alt="Add-a-heading" border="0"></a>
+  <h3 align="center">FVM-AI-Deploy</h3>
+  <h3 aligh-"center">https://solidity-code-deployer.vercel.app/deployer</h3>
+</div>
 
 ### 👨‍🔬 What is this and what was this built for?
 
-FVM-AI-Deploy was built for the purpose of improving the developer experience on the FVM Chains, For FVM to be used and adopted widely the developer experience has to improve and FVM-AI-Deploy was built with the same goal. Not only does it improve the deployment, interaction and verification process but it also allows **generate the contract code automatically based on user request with the power of AI**. If you want to deploy a contract asap or are you beginer on writing contract, FVM-AI-Deploy is a place for you to genearte contract and deploy in a mins.
+FVM-AI-Deploy was built for the purpose of improving the developer experience on the FVM Chains, For FVM to be used and adopted widely the developer experience has to improve and FVM-AI-Deploy was built with the same goal. Not only does it improve the deployment, interaction and verification process but it also allows **generate the contract code automatically based on user request using the power of AI**. If you want to deploy a contract asap or are you a beginer on writing contract, FVM-AI-Deploy is a place for you to genearte contract and deploy in a mins.
 
 ## 🤔 Why FVM-AI-Deploy?
 
@@ -27,7 +32,7 @@ Writing flaw less contracts are time consuming and also if begginer wanna explor
 
 2. Deployer - It Generate, compile and deploy contract based on user input
 
-AI mechanism - FVM-AI-Deploy use fine tune version of open-AI Generate model. Here we tweaked that model more into generate storage related contract development. so our results comes well for storage related contracts. Currently we are working on improve the model more into generation on erc20,erc721 and erc1155 development.
+**AI mechanism** - FVM-AI-Deploy use fine tune version of open-AI Generate model. Here we tweaked that model more into generate storage related contract development. so our results comes well for storage related contracts. Currently we are working on improve the model more into generation on erc20,erc721 and erc1155 development.
 
 --> APIs for developers 👇
 
@@ -41,7 +46,7 @@ API Docs:- https://abi-test.onrender.com/docs#/
 
 ### ☄️ What's next?
 
-1. Building FVM-AI-Deploy like contract as a service platform. User can get varity on contracts code in a sec and deploy those contracts in a mins.
+1. Building FVM-AI-Deploy like **contract as a service platform that support varity of contracts under different category**.
 
 2. AI model keep improve to support different kind of contracts model.
 
